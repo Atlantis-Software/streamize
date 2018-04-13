@@ -29,7 +29,9 @@
     "url": "git+https://github.com/Atlantis-Software/streamize.git"
   },
   "scripts": {
-    "test": "mocha ./test/"
+    "test": "mocha ./test/",
+    "cover": "istanbul cover _mocha",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
   },
   "version": "0.0.1"
 }
