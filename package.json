@@ -6,12 +6,14 @@
   "bugs": {
     "url": "https://github.com/Atlantis-Software/streamize/issues"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "deprecated": false,
   "description": "stream helper for NodeJs",
   "devDependencies": {
-    "mocha": "~5.1.0"
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "~5.1.0",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "engines": {
     "node": ">= 6.0.0"
