@@ -1,0 +1,35 @@
+{
+  "author": {
+    "name": "Alexandre Tiertant",
+    "email": "a.tiertant@atlantis-software.net"
+  },
+  "bugs": {
+    "url": "https://github.com/Atlantis-Software/streamize/issues"
+  },
+  "dependencies": {
+  },
+  "deprecated": false,
+  "description": "stream helper for NodeJs",
+  "devDependencies": {
+    "mocha": "~5.1.0"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "homepage": "https://github.com/Atlantis-Software/telepathymq",
+  "keywords": [
+    "stream",
+    "helper"
+  ],
+  "license": "MIT",
+  "main": "./index.js",
+  "name": "streamize",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atlantis-Software/streamize.git"
+  },
+  "scripts": {
+    "test": "mocha ./test/"
+  },
+  "version": "0.0.1"
+}
