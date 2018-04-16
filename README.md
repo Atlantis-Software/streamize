@@ -65,7 +65,14 @@ var readable = streamize.Readable(function(cb) {
 });
 ```
 
-### Writeable
+### Writable
+
+Description: create a writable stream
+
+`streamize.Writable(write, [options])`
+* write is a function that take the chunk to be written and a callback function as arguments.
+* options is an optional object argument passed to the node stream: [see node writable stream documentation](https://nodejs.org/api/stream.html#stream_constructor_new_stream_writable_options)
+
 #### sample
 ```javascript
 var streamize = require('streamize');
@@ -77,7 +84,19 @@ var writable = streamize.Writable(function(chunk, cb) {
 });
 ```
 
+the write function is called each time a chunk should be written.
+chunk <Buffer> | <string> | <any> The chunk to be written. Will always be a buffer unless the decodeStrings option was set to false or the stream is operating in object mode.
+callback <Function> Call this function (optionally with an error argument) when processing is complete for the supplied chunk.
+
 ### Duplex
+
+Description: create a duplex stream
+
+`streamize.Duplex(read, write, [options])`
+* read is a function that take a callback function as argument.[see Readable read function](#readable)
+* write is a function that take the chunk to be written and a callback function as arguments.[see Writable write function](#writable)
+* options is an optional object argument passed to the node stream: [see node duplex stream documentation](https://nodejs.org/api/stream.html#stream_new_stream_duplex_options)
+
 #### sample
 ```javascript
 var streamize = require('streamize');
@@ -93,14 +112,34 @@ var duplex = streamize.Duplex(function(cb) {
 ```
 
 ### Transform
+
+Description: create a transform stream
+
+`streamize.Transform(transform, [options])`
+* transform is a function that take the chunk to be transform and a callback function as arguments.
+* options is an optional object argument passed to the node stream: [see node transform stream documentation](https://nodejs.org/api/stream.html#stream_new_stream_transform_options)
+
 #### sample
 ```javascript
 var streamize = require('streamize');
 // create a transform stream that duplicate all chunks
-var transform = streamize.Transform(function(data, cb) {
-  this.push(data);
-  cb(null, data);
+var transform = streamize.Transform(function(chunk, cb) {
+  this.push(chunk);
+  cb(null, chunk);
 });
+```
 
-### obj.*
+the transform function is called each time a chunk should be transform.
+chunk <Buffer> | <string> | <any> The chunk to be written. Will always be a buffer unless the decodeStrings option was set to false or the stream is operating in object mode.
+callback <Function> A callback function (optionally with an error argument and data) to be called after the supplied chunk has been processed.
 
+As transform function is called in the stream context, every internal function could be called from `this`.
+
+### Object mode
+
+`streamize.obj.Readable(read, [options])`
+`streamize.obj.Writable(write, [options])`
+`streamize.obj.Duplex(read, write, [options])`
+`streamize.obj.Transform(transform, [options])`
+
+do the same but return a stream in object mode.
