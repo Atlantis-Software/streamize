@@ -138,8 +138,11 @@ As transform function is called in the stream context, every internal function c
 ### Object mode
 
 `streamize.obj.Readable(read, [options])`
+
 `streamize.obj.Writable(write, [options])`
+
 `streamize.obj.Duplex(read, write, [options])`
+
 `streamize.obj.Transform(transform, [options])`
 
 do the same but return a stream in object mode.
